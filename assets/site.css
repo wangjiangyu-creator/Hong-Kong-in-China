@@ -163,6 +163,14 @@ h3 {
   max-width: 760px;
 }
 
+.hero-credit {
+  margin: 16px 0 0;
+  color: var(--teal-dark);
+  font-size: 15px;
+  font-weight: 700;
+  max-width: 760px;
+}
+
 .hero-actions,
 .section-actions {
   display: flex;
@@ -609,6 +617,12 @@ h3 {
 
 .footer-inner a {
   color: #dce6ec;
+}
+
+.footer-note {
+  margin: 8px 0 0;
+  color: #aebdc6;
+  font-size: 13px;
 }
 
 .note {
