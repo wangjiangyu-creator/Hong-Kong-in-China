@@ -51,7 +51,7 @@
   }
 
   function sourceCard(source) {
-    const tags = source.tags.map((tag) => `<span class="tag">${html(tag)}</span>`).join("");
+    const tags = (source.tags || []).map((tag) => `<span class="tag">${html(tag)}</span>`).join("");
     return `
       <article class="source-card" data-source-type="${html(source.type)}">
         <div class="type">${html(source.type)}</div>
@@ -64,13 +64,34 @@
     `;
   }
 
+  function sourceText(source) {
+    return [
+      source.type,
+      source.title,
+      source.date,
+      source.publisher,
+      source.note,
+      (source.tags || []).join(" "),
+      (source.usedFor || []).join(" "),
+    ].join(" ").toLowerCase();
+  }
+
+  function filterSources(type, query) {
+    const normalized = String(query || "").trim().toLowerCase();
+    return data.sources.filter((source) => {
+      const typeMatch = type === "全部" || source.type === type;
+      const queryMatch = !normalized || sourceText(source).includes(normalized);
+      return typeMatch && queryMatch;
+    });
+  }
+
   function renderSources() {
     document.querySelectorAll("[data-source-list]").forEach((container) => {
       const themeId = container.getAttribute("data-theme-id");
       const type = container.getAttribute("data-source-type");
       let sources = data.sources;
       if (themeId) {
-        sources = sources.filter((source) => source.usedFor.includes(themeId));
+        sources = sources.filter((source) => (source.usedFor || []).includes(themeId));
       }
       if (type) {
         sources = sources.filter((source) => source.type === type);
@@ -84,6 +105,18 @@
     const list = document.querySelector("[data-source-list='all']");
     if (!filters || !list) return;
     const types = ["全部"].concat(Array.from(new Set(data.sources.map((source) => source.type))));
+    const search = document.querySelector("[data-source-search]");
+    const resultCount = document.querySelector("[data-source-result-count]");
+    let selected = "全部";
+
+    function updateList() {
+      const sources = filterSources(selected, search ? search.value : "");
+      list.innerHTML = sources.map(sourceCard).join("");
+      if (resultCount) {
+        resultCount.textContent = `显示 ${sources.length} / ${data.sources.length} 条资料`;
+      }
+    }
+
     filters.innerHTML = types
       .map((type) => `<button class="filter-button" type="button" aria-pressed="${type === "全部"}" data-filter="${html(type)}">${html(type)}</button>`)
       .join("");
@@ -93,10 +126,15 @@
       if (!button) return;
       filters.querySelectorAll("button").forEach((item) => item.setAttribute("aria-pressed", "false"));
       button.setAttribute("aria-pressed", "true");
-      const selected = button.getAttribute("data-filter");
-      const sources = selected === "全部" ? data.sources : data.sources.filter((source) => source.type === selected);
-      list.innerHTML = sources.map(sourceCard).join("");
+      selected = button.getAttribute("data-filter");
+      updateList();
     });
+
+    if (search) {
+      search.addEventListener("input", updateList);
+    }
+
+    updateList();
   }
 
   function renderTimeline() {
@@ -157,6 +195,23 @@
       const count = data.sources.filter((source) => source.type === type).length;
       node.textContent = count;
     });
+    document.querySelectorAll("[data-source-total]").forEach((node) => {
+      const rounded = Math.floor(data.sources.length / 10) * 10;
+      node.textContent = `${rounded}+`;
+    });
+  }
+
+  function renderLibraryStats() {
+    const stats = {
+      total: data.sources.length,
+      english: data.sources.filter((source) => (source.tags || []).includes("英文资料")).length,
+      journal: data.sources.filter((source) => (source.tags || []).includes("学术期刊")).length,
+      policy: data.sources.filter((source) => source.type === "政策报告").length,
+    };
+    document.querySelectorAll("[data-library-stat]").forEach((node) => {
+      const key = node.getAttribute("data-library-stat");
+      node.textContent = stats[key] || 0;
+    });
   }
 
   function setYear() {
@@ -173,6 +228,7 @@
     renderTimeline();
     renderComparisonTable();
     renderSourceCounts();
+    renderLibraryStats();
     setYear();
   }
 
