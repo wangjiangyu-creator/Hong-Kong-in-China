@@ -205,6 +205,7 @@
     const stats = {
       total: data.sources.length,
       english: data.sources.filter((source) => (source.tags || []).includes("英文资料")).length,
+      chinese: data.sources.filter((source) => !(source.tags || []).includes("英文资料")).length,
       journal: data.sources.filter((source) => (source.tags || []).includes("学术期刊")).length,
       policy: data.sources.filter((source) => source.type === "政策报告").length,
     };

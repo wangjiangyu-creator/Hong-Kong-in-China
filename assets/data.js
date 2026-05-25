@@ -1,5 +1,7 @@
 (function () {
-  const files = ["data-payload-00.txt","data-payload-01.txt","data-payload-02.txt","data-payload-03.txt","data-payload-04.txt","data-payload-05.txt","data-payload-06.txt","data-payload-07.txt","data-payload-08.txt","data-payload-09.txt","data-payload-10.txt","data-payload-11.txt","data-payload-12.txt","data-payload-13.txt","data-payload-14.txt"];
+  const files = ["data-payload-00.txt","data-payload-01.txt","data-payload-02.txt","data-payload-03.txt","data-payload-04.txt","data-payload-05.txt","data-payload-06.txt","data-payload-07.txt","data-payload-08.txt","data-payload-09.txt","data-payload-10.txt"];
+  const fallbackFiles = ["data-payload-00.txt","data-payload-01.txt","data-payload-02.txt","data-payload-03.txt","data-payload-04.txt","data-payload-05.txt","data-payload-06.txt","data-payload-07.txt","data-payload-08.txt","data-payload-09.txt","data-payload-10.txt","data-payload-11.txt","data-payload-12.txt","data-payload-13.txt","data-payload-14.txt"];
+  const extraFiles = ["data-extra-chinese-journals.json"];
   const current = document.currentScript && document.currentScript.src ? document.currentScript.src : "";
   const root = current ? current.slice(0, current.lastIndexOf("/") + 1) : "assets/";
   window.siteData = window.siteData || { themes: [], sources: [], events: [], comparisons: [] };
@@ -15,10 +17,39 @@
     return new Response(stream).text();
   }
 
-  window.siteDataReady = Promise.all(files.map((file) => fetch(root + file).then((response) => {
-    if (!response.ok) throw new Error("Failed to load " + file);
-    return response.text();
-  })))
-    .then((chunks) => inflateBase64(chunks.join("")))
-    .then((json) => { window.siteData = JSON.parse(json); return window.siteData; });
+  function mergeSources(data, additions) {
+    const sources = additions && Array.isArray(additions.sources) ? additions.sources : [];
+    if (!sources.length) return data;
+    const seen = new Set((data.sources || []).map((source) => `${source.title}|${source.url}`));
+    sources.forEach((source) => {
+      const key = `${source.title}|${source.url}`;
+      if (!seen.has(key)) {
+        data.sources.push(source);
+        seen.add(key);
+      }
+    });
+    return data;
+  }
+
+  async function loadExtraSources(data) {
+    const groups = await Promise.all(extraFiles.map((file) => fetch(root + file)
+      .then((response) => (response.ok ? response.json() : null))
+      .catch(() => null)));
+    groups.forEach((group) => mergeSources(data, group));
+    return data;
+  }
+
+  function loadCompressedData(payloadFiles) {
+    return Promise.all(payloadFiles.map((file) => fetch(root + file).then((response) => {
+      if (!response.ok) throw new Error("Failed to load " + file);
+      return response.text();
+    })))
+      .then((chunks) => inflateBase64(chunks.join("")));
+  }
+
+  window.siteDataReady = loadCompressedData(files)
+    .catch(() => loadCompressedData(fallbackFiles))
+    .then((json) => JSON.parse(json))
+    .then(loadExtraSources)
+    .then((loaded) => { window.siteData = loaded; return window.siteData; });
 }());

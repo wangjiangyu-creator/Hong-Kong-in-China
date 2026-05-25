@@ -1,0 +1,104 @@
+{
+  "sources": [
+    {
+      "type": "学术理论",
+      "title": "“一国两制”香港经验及对“一国两制”台湾方案的启示",
+      "date": "2024-03-01",
+      "publisher": "法学评论",
+      "url": "https://cnki.huanghuai.edu.cn/KCMS/detail/detail.aspx?dbcode=CJFQ&dbname=CJFD2024&filename=FXPL202402005",
+      "tags": ["中文资料", "学术期刊", "一国两制", "地方治理"],
+      "usedFor": ["one-country-two-systems", "leadership-discourse", "institutional-advantages"],
+      "note": "周叶中、徐莹论文，把香港经验置于国家统一、地方治理和爱国者治港框架中讨论。"
+    },
+    {
+      "type": "学术理论",
+      "title": "“一国两制”的渊源、制度与文明内涵——以香港实践为例",
+      "date": "2023-06-01",
+      "publisher": "南大法学",
+      "url": "https://njfl.chinajournal.net.cn/WKG/WebPublication/wkTextContent.aspx?colType=4&st=03&yt=2023",
+      "tags": ["中文资料", "学术期刊", "一国两制", "政治文明"],
+      "usedFor": ["one-country-two-systems", "leadership-discourse", "institutional-advantages"],
+      "note": "田飞龙论文从历史渊源、宪制治理和政治文明角度解释香港实践的新阶段。"
+    },
+    {
+      "type": "学术理论",
+      "title": "香港国安法的实施成效、法理正当性与制度前景",
+      "date": "2023-10-15",
+      "publisher": "中央社会主义学院学报",
+      "url": "https://zysh.cbpt.cnki.net/portal/journal/portal/client/paper/a7072e6cf98a23b35ffe534138f13263",
+      "tags": ["中文资料", "学术期刊", "香港国安法", "国家安全"],
+      "usedFor": ["one-country-two-systems", "international-status", "institutional-advantages"],
+      "note": "评估香港国安法实施后的制度效果、法理基础和一国两制行稳致远条件。"
+    },
+    {
+      "type": "学术理论",
+      "title": "“一国两制”与香港基本法理论研究",
+      "date": "2020-10-13",
+      "publisher": "浙江社会科学",
+      "url": "https://zjsh.cbpt.cnki.net/portal/journal/portal/client/paper/85858c17a0a281d3d6db3c7847f42e5c",
+      "tags": ["中文资料", "学术期刊", "基本法", "宪制秩序"],
+      "usedFor": ["one-country-two-systems", "leadership-discourse", "institutional-advantages"],
+      "note": "杨晓楠主持的基本法理论研究专题，可作为香港基本法颁布30周年的中文核心期刊资料。"
+    },
+    {
+      "type": "学术理论",
+      "title": "香港特别行政区判例法中的权力分置原则",
+      "date": "2020-10-13",
+      "publisher": "浙江社会科学",
+      "url": "https://zjsh.cbpt.cnki.net/portal/journal/portal/client/paper/f1f513de5d8a9837b42d430fc5d24999",
+      "tags": ["中文资料", "学术期刊", "普通法", "司法机关"],
+      "usedFor": ["one-country-two-systems", "international-status", "institutional-advantages"],
+      "note": "罗沛然、陈弘毅论文讨论香港法院如何在基本法框架下运用权力分置、司法谦抑和不干预原则。"
+    },
+    {
+      "type": "学术理论",
+      "title": "“一国两制”下的香港司法机关",
+      "date": "2020-03-01",
+      "publisher": "港澳研究",
+      "url": "https://hub.hku.hk/handle/10722/290581",
+      "tags": ["中文资料", "学术期刊", "司法独立", "普通法"],
+      "usedFor": ["one-country-two-systems", "international-status", "institutional-advantages"],
+      "note": "陈弘毅、罗沛然论文系统介绍香港司法机关、法院制度和一国两制下司法特殊性。"
+    },
+    {
+      "type": "学术理论",
+      "title": "中央治港方针的历史原意与规范意涵——重温邓小平关于“一国两制”方针的重要论述",
+      "date": "2020-06-01",
+      "publisher": "港澳研究",
+      "url": "https://cahkms.org/uploadFiles/20200622/7AE5DA8AF0C348F2ABD4E7DC6E958A84.pdf",
+      "tags": ["中文资料", "学术期刊", "中央治港方针", "话语体系"],
+      "usedFor": ["one-country-two-systems", "leadership-discourse"],
+      "note": "强世功论文重读邓小平相关论述，梳理一国两制、港人治港和高度自治的规范意涵。"
+    },
+    {
+      "type": "学术理论",
+      "title": "香港基本法的立法、实践与未来发展——纪念《中华人民共和国香港特别行政区基本法》颁布30周年笔谈",
+      "date": "2020-06-01",
+      "publisher": "港澳研究",
+      "url": "https://cahkms.org/uploadFiles/20200622/7AE5DA8AF0C348F2ABD4E7DC6E958A84.pdf",
+      "tags": ["中文资料", "学术期刊", "基本法", "宪法"],
+      "usedFor": ["one-country-two-systems", "leadership-discourse", "institutional-advantages"],
+      "note": "陈弘毅、谭惠珠、梁美芬、罗沛然笔谈，围绕基本法立法、实践和未来发展展开。"
+    },
+    {
+      "type": "学术理论",
+      "title": "香港特别行政区维护国家安全法：学习与解读",
+      "date": "2020-09-01",
+      "publisher": "港澳研究",
+      "url": "https://cahkms.org/uploadFiles/20201022/CB81F3E4FD1549BFB9D243227898B0BC.pdf",
+      "tags": ["中文资料", "学术期刊", "香港国安法", "一国两制"],
+      "usedFor": ["one-country-two-systems", "international-status", "leadership-discourse"],
+      "note": "饶戈平论文集中解释香港国安法的必要性、正当性、主要内容和制度意义。"
+    },
+    {
+      "type": "学术理论",
+      "title": "“一国两制”下中央对特别行政区全面管治权之释义分析——兼论全面管治权与高度自治权的关系",
+      "date": "2018-09-01",
+      "publisher": "吉首大学学报（社会科学版）",
+      "url": "https://skxb.jsu.edu.cn/CN/10.13438/j.cnki.jdxb.2018.05.009",
+      "tags": ["中文资料", "学术期刊", "全面管治权", "高度自治"],
+      "usedFor": ["one-country-two-systems", "leadership-discourse", "institutional-advantages"],
+      "note": "邓莉、杜承铭论文从主权、授权和宪制结构角度分析全面管治权与高度自治权关系。"
+    }
+  ]
+}
